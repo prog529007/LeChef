@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:lechef/screens/home_screen.dart';
+import 'package:lechef/screens/login.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.dark, // Enable dark mode
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
