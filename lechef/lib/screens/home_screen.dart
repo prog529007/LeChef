@@ -230,7 +230,23 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _showVoiceAgentDialog(BuildContext context) {
+
+  Future<List<String>> _getAvailableIngredients() async {
+    User? user = _auth.currentUser;
+    if (user == null) return [];
+
+    QuerySnapshot snapshot = await _firestore
+        .collection('users')
+        .doc(user.uid)
+        .collection('fridge')
+        .get();
+
+    return snapshot.docs.map((doc) => (doc.data() as Map<String, dynamic>)['name'] as String).toList();
+  }
+
+  void _showVoiceAgentDialog(BuildContext context) async {
+    List<String> ingredients = await _getAvailableIngredients();
+
     showDialog(
       context: context,
       barrierDismissible: true,
@@ -251,14 +267,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () async {
                     if (!isCallStarted) {
                       await vapi.start(assistant: {
-                        "firstMessage": "Hello, I am an assistant.",
+                        "firstMessage": "Hello, I'm your AI powered cooking assistant!",
                         "model": {
                           "provider": "openai",
                           "model": "gpt-3.5-turbo",
                           "messages": [
                             {
                               "role": "system",
-                              "content": "You are an assistant."
+                              "content": "You are an assistant that talks to the user and helps them prepare meals by suggesting recipes based on available ingredients. The available ingredients are: ${ingredients.join(', ')}. If there is some additional ingredient which is really required, you suggest them to the user."
                             }
                           ]
                         },
@@ -288,7 +304,6 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
     ).then((_) {
-      // Ensure Vapi is stopped if the dialog is dismissed
       if (isCallStarted) {
         vapi.stop();
       }

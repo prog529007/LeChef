@@ -1,53 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class InventoryScreen extends StatelessWidget {
-//   final List<Map<String, dynamic>> inventory;
-
-//   InventoryScreen({required this.inventory});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Inventory'),
-//       ),
-//       body: inventory.isNotEmpty
-//           ? ListView.builder(
-//               padding: EdgeInsets.all(16.0),
-//               itemCount: inventory.length,
-//               itemBuilder: (context, index) {
-//                 return _buildInventoryItem(context, inventory[index], index);
-//               },
-//             )
-//           : Center(
-//               child: Text('No items in inventory'),
-//             ),
-//     );
-//   }
-
-//   Widget _buildInventoryItem(BuildContext context, Map<String, dynamic> item, int index) {
-//     return Container(
-//       margin: EdgeInsets.symmetric(vertical: 8),
-//       decoration: BoxDecoration(
-//         color: Color(0xFF1E1E1E),
-//         borderRadius: BorderRadius.circular(12),
-//       ),
-//       child: ListTile(
-//         leading: item['image'] != null
-//             ? Image.file(item['image'], width: 50, height: 50)
-//             : Icon(Icons.fastfood, color: Colors.tealAccent),
-//         title: Text(item['name'], style: TextStyle(color: Colors.white)),
-//         subtitle: Text('Expires: ${item['expiry']}\nQuantity: ${item['quantity']}',
-//             style: TextStyle(color: Colors.grey)),
-//         trailing: Icon(Icons.chevron_right, color: Colors.tealAccent),
-//         onTap: () {
-//           // Handle navigation for editing item
-//         },
-//       ),
-//     );
-//   }
-// }
-
 import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -98,6 +48,8 @@ class _InventoryScreenState extends State<InventoryScreen> {
       onTap: () => _editItemQuantity(index),
     );
   }
+
+  
 
   Widget _buildItemImage(dynamic image) {
     if (image == null) {

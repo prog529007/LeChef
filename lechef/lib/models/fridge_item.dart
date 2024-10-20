@@ -22,4 +22,21 @@ class FridgeItem {
       expiryDate: DateTime.parse(json['expiryDate']),
     );
   }
+
+  ExpiryStatus getExpiryStatus() {
+    final now = DateTime.now();
+    final daysLeft = expiryDate.difference(now).inDays;
+
+    if (daysLeft <= 0) {
+      return ExpiryStatus.expired;
+    } else if (daysLeft <= 3) {
+      return ExpiryStatus.soon;
+    } else if (daysLeft <= 7) {
+      return ExpiryStatus.upcoming;
+    } else {
+      return ExpiryStatus.fresh;
+    }
+  }
 }
+
+enum ExpiryStatus { expired, soon, upcoming, fresh }
