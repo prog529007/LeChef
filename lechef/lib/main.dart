@@ -4,9 +4,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lechef/screens/home_screen.dart';
 import 'package:lechef/screens/login.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   @override
