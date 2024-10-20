@@ -18,8 +18,8 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                   child: _buildOptionCard(
                     context,
-                    icon: Icons.qr_code_scanner,
-                    title: 'Scan Product',
+                    icon: Icons.add,
+                    title: 'Add Product',
                     onTap: () {
                       Navigator.push(
                         context,

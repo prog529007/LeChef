@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "251943637245",
+    "project_id": "chefitup-19f27",
+    "storage_bucket": "chefitup-19f27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251943637245:android:8752919977903692306e94",
+        "android_client_info": {
+          "package_name": "com.example.lechef"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEzEetMDZ6SI2u2YjGE-EG7k27sLMtZIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
